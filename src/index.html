@@ -122,7 +122,6 @@
         <div>
           <oj-bind-for-each data="[[formTemplate]]">
             <template data-oj-as="question">
-
               <!-- <oj-bind-text value="[[question.observableIndex]]"></oj-bind-text> -->
 
               <oj-bind-text value="[[question.data.name]]"></oj-bind-text>
@@ -188,7 +187,7 @@
                 <div>
                   <oj-combobox-many
                     id="combobox1"
-                    value="[[question.data.value]]"
+                    value="{{question.data.value}}"
                     label-hint="[[question.data.name]]"
                     class="oj-form-control-max-width-md"
                   >
@@ -202,6 +201,21 @@
                       </template>
                     </oj-bind-for-each>
                   </oj-combobox-many>
+                </div>
+              </oj-bind-if>
+              <oj-bind-if test="[[question.data.typeInput == 'date']]">
+                <oj-input-date
+                  label-hint="{{question.data.name}}"
+                  autocomplete="off"
+                  value="{{question.data.value}}"
+                ></oj-input-date>
+              </oj-bind-if>
+              <oj-bind-if test="[[question.data.typeInput == 'switch']]">
+                <div>
+                  <oj-switch
+                    value="{{question.data.value}}"
+                    label-hint="{{question.data.name}}"
+                  ></oj-switch>
                 </div>
               </oj-bind-if>
             </template>

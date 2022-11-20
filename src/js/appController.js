@@ -25,6 +25,9 @@ define([
   "ojs/ojcheckboxset",
   "ojs/ojselectcombobox",
   "ojs/ojmessaging",
+  "ojs/ojconverterutils-i18n",
+  "ojs/ojdatetimepicker",
+  "ojs/ojswitch",
 ], function (
   Context,
   ResponsiveUtils,
@@ -59,8 +62,8 @@ define([
         value: "",
       },
       {
-        id: "phone",
-        name: "Phone Number",
+        id: "age",
+        name: "Age",
         typeInput: "inputNumber",
         type: "number",
         required: true,
@@ -117,6 +120,29 @@ define([
         ],
         value: [],
       },
+      {
+        id: "date",
+        name: "date",
+        typeInput: "date",
+        type: "date",
+        required: true,
+        style: "",
+        placeholder: "",
+        class: "",
+        value: null,
+      },
+      {
+        id: "switch",
+        name: "switch",
+        typeInput: "switch",
+        type: "switch",
+        required: true,
+        style: "",
+        placeholder: "",
+        class: "",
+        value: null,
+      },
+
       // {
       //   id: "email",
       //   name: "Email",
@@ -147,19 +173,39 @@ define([
 
       switch (self.formTemplate[i].typeInput) {
         case "inputNumber":
-          self.formTemplate[i].value = ko.observable(self.formTemplate[i].value);
+          self.formTemplate[i].value = ko.observable(
+            self.formTemplate[i].value
+          );
           break;
         case "inputText":
-          self.formTemplate[i].value = ko.observable(self.formTemplate[i].value);
+          self.formTemplate[i].value = ko.observable(
+            self.formTemplate[i].value
+          );
           break;
         case "check":
-          self.formTemplate[i].value = ko.observableArray(self.formTemplate[i].value);
+          self.formTemplate[i].value = ko.observableArray(
+            self.formTemplate[i].value
+          );
           break;
         case "select":
-          self.formTemplate[i].value = ko.observable(self.formTemplate[i].value);
+          self.formTemplate[i].value = ko.observable(
+            self.formTemplate[i].value
+          );
           break;
         case "selectmany":
-          self.formTemplate[i].value = ko.observableArray(self.formTemplate[i].value);
+          self.formTemplate[i].value = ko.observableArray(
+            self.formTemplate[i].value
+          );
+          break;
+        case "date":
+          self.formTemplate[i].value = ko.observable(
+            self.formTemplate[i].value
+          );
+          break;
+        case "switch":
+          self.formTemplate[i].value = ko.observable(
+            self.formTemplate[i].value
+          );
           break;
       }
 
