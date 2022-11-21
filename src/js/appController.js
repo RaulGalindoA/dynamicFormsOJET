@@ -225,7 +225,9 @@ define([
       let values = [];
       for (let i = 0; i < self.formTemplate.length; i++) {
         const element = self.formTemplate[i];
-        values.push(element.value());
+        const val = {}
+        val[`${element.id}`] = element.value()
+        values.push(val);
       }
       console.log(values);
     };
