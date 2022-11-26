@@ -28,6 +28,7 @@ define([
   "ojs/ojconverterutils-i18n",
   "ojs/ojdatetimepicker",
   "ojs/ojswitch",
+  "ojs/ojmessages"
 ], function (
   Context,
   ResponsiveUtils,
@@ -46,6 +47,15 @@ define([
 
     this.value = ko.observable("aes");
     this.rawValue = ko.observable("eas");
+    //ErrorMessages
+    this.messageFullName = ko.observable([{}]);
+    
+    let error = [{
+      summary: "",
+      detail: "Required",
+      severity: "error",
+    }];
+    this.messageFullName(error);
 
     self = this;
 
@@ -59,7 +69,7 @@ define([
         style: "",
         placeholder: "",
         class: "",
-        value: "",
+        value: ""
       },
       {
         id: "age",
@@ -70,7 +80,7 @@ define([
         style: "",
         placeholder: "",
         class: "",
-        value: null,
+        value: null
       },
       {
         id: "check",
@@ -86,7 +96,7 @@ define([
           { name: "option2", value: "val2" },
           { name: "option3", value: "val3" },
         ],
-        value: null,
+        value: null
       },
       {
         id: "select",
@@ -102,7 +112,7 @@ define([
           { name: "combooption2", value: "2" },
           { name: "combooption3", value: "3" },
         ],
-        value: null,
+        value: null
       },
       {
         id: "selectmany",
@@ -118,7 +128,7 @@ define([
           { name: "combomanyoption2", value: "2" },
           { name: "combomanyoption3", value: "3" },
         ],
-        value: [],
+        value: []
       },
       {
         id: "date",
@@ -129,7 +139,7 @@ define([
         style: "",
         placeholder: "",
         class: "",
-        value: null,
+        value: null
       },
       {
         id: "switch",
@@ -140,31 +150,8 @@ define([
         style: "",
         placeholder: "",
         class: "",
-        value: null,
-      },
-
-      // {
-      //   id: "email",
-      //   name: "Email",
-      //   typeInput: "inputText",
-      //   type: "email",
-      //   required: true,
-      //   style: "",
-      //   placeholder: "",
-      //   class: "",
-      //   value: "",
-      // },
-      // {
-      //   id: "password",
-      //   name: "password",
-      //   typeInput: "inputNumber",
-      //   type: "password",
-      //   required: true,
-      //   style: "",
-      //   placeholder: "",
-      //   class: "",
-      //   value: null,
-      // },
+        value: null
+      }
     ];
 
     for (let i = 0; i < self.formTemplate.length; i++) {
@@ -207,6 +194,11 @@ define([
             self.formTemplate[i].value
           );
           break;
+          
+      }
+      if(self.formTemplate[i].required){
+        self.formTemplate[i].messagesCustom = ko.observable(error);
+
       }
 
       // if (self.formTemplate[i].typeInput == "inputNumber") {

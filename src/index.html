@@ -131,24 +131,29 @@
                   label-hint="{{question.data.name}}"
                 ></oj-input-text> -->
                 <oj-input-text
+                  id="{{question.data.id}}"
                   value="{{question.data.value}}"
                   label-hint="{{question.data.name}}"
+                  messages-custom="{{question.data.messagesCustom}}"
                 ></oj-input-text>
+
               </oj-bind-if>
               <oj-bind-if test="[[question.data.typeInput == 'inputNumber']]">
                 <oj-input-number
-                  id="buttonId1"
+                  id="{{question.data.id}}"
                   value="{{question.data.value}}"
                   label-hint="{{question.data.name}}"
                   min="0"
                   max="100"
                   step="0"
+                  messages-custom="{{question.data.messagesCustom}}"
                 ></oj-input-number>
               </oj-bind-if>
+
               <oj-bind-if test="[[question.data.typeInput == 'check']]">
                 <div class="flex flex-row">
                   <oj-checkboxset
-                    id="enabledCheckboxset"
+                    id="{{question.data.id}}"
                     value="{{question.data.value}}"
                     label-hint="Enabled"
                   >
@@ -164,6 +169,7 @@
                   </oj-checkboxset>
                 </div>
               </oj-bind-if>
+
               <oj-bind-if test="[[question.data.typeInput == 'select']]">
                 <div>
                   <oj-combobox-one
@@ -186,7 +192,7 @@
               <oj-bind-if test="[[question.data.typeInput == 'selectmany']]">
                 <div>
                   <oj-combobox-many
-                    id="combobox1"
+                    id="{{question.data.id}}"
                     value="{{question.data.value}}"
                     label-hint="[[question.data.name]]"
                     class="oj-form-control-max-width-md"
@@ -208,6 +214,7 @@
                   label-hint="{{question.data.name}}"
                   autocomplete="off"
                   value="{{question.data.value}}"
+                 
                 ></oj-input-date>
               </oj-bind-if>
               <oj-bind-if test="[[question.data.typeInput == 'switch']]">
