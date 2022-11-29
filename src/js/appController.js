@@ -55,7 +55,7 @@ define([
       detail: "Required",
       severity: "error",
     }];
-    this.messageFullName(error);
+
 
     self = this;
 
